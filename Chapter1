@@ -1,0 +1,33 @@
+div class="main">
+	<div class="box fl"></div>
+	<div class="box fr"></div>
+	<div class="center">
+		<a href="#">Hi</a>
+		<div id="A"></div>
+		<span id="B"></span>
+		<div id="C"></div>
+		<div id="D"></div>
+		<div id="E"></div>	
+	</div>
+</div>
+<div class="footer"></div>
+
+<script>
+var nodeAnchor=document.querySelector("a");
+for(var x in nodeAnchor){
+document.write(x+"<br />")
+}
+document.write("<hr />")
+document.write(document.querySelector("a").firstChild.nodeValue)
+//创建strong元素与文本节点并添加到DOM
+document.getElementById('A').innerHTML="<strong>Hi</strong>";
+//创建一个div元素与文本节点替换span
+document.getElementById("B").outerHTML=""+'<div id="B" class="new">whats this</div>';
+//创建文本节点并用其更新div#c
+document.getElementById("C").textContent="dude";
+//创建文本节点并用它更新div#D  (innerText与outerText是非标准扩展)
+document.getElementById("D").innerText="keep it";
+//创建文本节点并用其替换div#E
+document.getElementById("E").outerText="real";
+console.log(document.body.innerHTML);
+</script>
