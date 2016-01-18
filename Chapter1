@@ -29,5 +29,17 @@ document.getElementById("C").textContent="dude";
 document.getElementById("D").innerText="keep it";
 //创建文本节点并用其替换div#E
 document.getElementById("E").outerText="real";
+
+
+●insertAdjacentHTML()方法仅在Element节点上有效，可以将节点插入到开标签之前，开标签之后、闭标签之前、闭标签之后。
+
+var elm=document.getElementById("elm");
+elm.insertAdjacentHTML('beforebegin','<span>你好</span>')；  //插入elm元素的容器外部文本的前方
+elm.insertAdjacentHTML("afterbegin","<span>最近</span>");      //插入elm元素的容器内部文本的前方
+elm.insertAdjacentHTML("beforeend","<span>怎么</span>");      //插入elm元素的容器内部文本后方
+elm.insertAdjacentHTML("afterend","<span>样啊</span>");         //插入elm元素的容器外部文本后方
+
+document.write()也可以用来同步创建、添加节点到DOM，但该方法会在页面加载、解析时就将传给它的值输出到页面上，会阻塞正在加载的HTML文档的解析。
+insertAdjacentHTML的选项beforebegin和afterend仅在节点在DOM树中并有父节点时有效。
 console.log(document.body.innerHTML);
 </script>
