@@ -1,45 +1,88 @@
-div class="main">
-	<div class="box fl"></div>
-	<div class="box fr"></div>
-	<div class="center">
-		<a href="#">Hi</a>
-		<div id="A"></div>
-		<span id="B"></span>
-		<div id="C"></div>
-		<div id="D"></div>
-		<div id="E"></div>	
-	</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Test</title> 
+<style>
+.top,.footer{width:100%;height:40px}
+.top{background-color: red}
+.footer{background-color: orange}
+.main{width:100%;height:300px;display: flex;justify-content:space-between;}
+.box{width:200px;background-color:blue;height: 100%}
+.center{background-color:silver;height: 100%;flex:2;width:100%;}
+</style>
+</head>
+<body>
+
+<div class="top"></div>
+<div class="main">
+<div class="box fl"></div>
+<div class="center">
+	<div id="A"><i>你好</i></div>
+	<p></p>
+    <div id="B">年轻人<strong>!</strong></div>
+    <ul>
+    	<li>你好
+         <li>hello</li>
+          <li>world</li> 
+    	</li>
+    	<li>吃了么</li>
+    </ul>
+    <a href="#"></a>
+    <a href="#"></a>
+    <a href="#"></a>
+</div>
+<div class="box fr"></div>
 </div>
 <div class="footer"></div>
-
+</div>
 <script>
-var nodeAnchor=document.querySelector("a");
-for(var x in nodeAnchor){
-document.write(x+"<br />")
-}
-document.write("<hr />")
-document.write(document.querySelector("a").firstChild.nodeValue)
-//创建strong元素与文本节点并添加到DOM
-document.getElementById('A').innerHTML="<strong>Hi</strong>";
-//创建一个div元素与文本节点替换span
-document.getElementById("B").outerHTML=""+'<div id="B" class="new">whats this</div>';
-//创建文本节点并用其更新div#c
-document.getElementById("C").textContent="dude";
-//创建文本节点并用它更新div#D  (innerText与outerText是非标准扩展)
-document.getElementById("D").innerText="keep it";
-//创建文本节点并用其替换div#E
-document.getElementById("E").outerText="real";
+/*var A=document.getElementById("A").innerHTML; //斜体你好
+var B=document.getElementById("A").outerHTML; //斜体你好
+var C=document.getElementById("B").textContent; //年轻人！
+var D=document.getElementById("B").innerText;  //年轻人！
+var E=document.getElementById("B").outerText;  //年轻人！
+document.write(A+"<br />"+B+"<br />"+C+"<br />"+D+"<br />"+E+"<br />")
 
+var strongA=document.createElement("strong");
+var text=document.createTextNode("小伙子");
+document.querySelector("strong").appendChild(text);
 
-●insertAdjacentHTML()方法仅在Element节点上有效，可以将节点插入到开标签之前，开标签之后、闭标签之前、闭标签之后。
-
-var elm=document.getElementById("elm");
-elm.insertAdjacentHTML('beforebegin','<span>你好</span>')；  //插入elm元素的容器外部文本的前方
-elm.insertAdjacentHTML("afterbegin","<span>最近</span>");      //插入elm元素的容器内部文本的前方
-elm.insertAdjacentHTML("beforeend","<span>怎么</span>");      //插入elm元素的容器内部文本后方
-elm.insertAdjacentHTML("afterend","<span>样啊</span>");         //插入elm元素的容器外部文本后方
-
-document.write()也可以用来同步创建、添加节点到DOM，但该方法会在页面加载、解析时就将传给它的值输出到页面上，会阻塞正在加载的HTML文档的解析。
-insertAdjacentHTML的选项beforebegin和afterend仅在节点在DOM树中并有父节点时有效。
+//替换元素节点
+var divA=document.getElementById("A");
+var newSpan=document.createElement("span");
+newSpan.textContent="雷猴";
+divA.parentNode.replaceChild(newSpan,divA);
+//替换文本节点
+var txtB=document.getElementById("B").firstChild;
+var newText=document.createTextNode("扑街");
+txtB.parentNode.replaceChild(newText,txtB)
 console.log(document.body.innerHTML);
+*/
+var cloneUl=document.querySelector("ul").cloneNode(false);
+console.log(cloneUl.constructor);//HTMLUListElement()
+console.log(cloneUl.innerHTML);//空字符串，当给cloneNode()传递的参数为false，只赋值一个节点而不复制其子节点
+//要赋值节点和它的子节点，给cloneNode()传递true为参数即可。
+var cloneUl2=document.querySelector("ul").cloneNode(true);
+console.log(cloneUl2.innerHTML);//<li>你好</li><li>吃了么</li>
+
+var childNodes=document.querySelector("ul").childNodes;
+console.log(childNodes);
+//document.links返回文档中的链接集合
+alert(Array.isArray(Array.prototype.slice.call(document.links)));//true
+alert(Array.isArray(Array.prototype.slice.call(document.querySelectorAll('a'))));//true
+//缓存ul
+var ul=document.querySelector("ul");
+//ul的parentNode名
+console.log(ul.parentNode.nodeName);
+//ul的第一个子节点
+console.log(ul.firstChild.nodeName);
+//ul的最后一个子节点
+console.log(ul.lastChild.nodeName);
+//第一个li的后一个节点
+console.log(ul.firstChild.nextSibling.nodeName);
+//最后一个li的前一个节点
+console.log(ul.lastChild.previousSibling.nodeName);
 </script>
+</body>
+</html>
