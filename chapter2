@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+</head>
+<body>
+<p id='p'></p>
+<script>
+//2.1
+var P=document.getElementById("p");
+P.innerHTML=("document的构造函数是： "+window.document.constructor);//function HTMLDocument()
+P.appendChild(document.createElement("br"));
+var a=document.createTextNode("document的节点类型值是: ");
+P.appendChild(a);
+P.appendChild(document.createTextNode(window.document.nodeType));//DOCUMENT_NODE  9
+P.appendChild(document.createElement("br"));
+//2.2
+//自有属性
+var b=document.createTextNode("document自有属性: ");
+P.appendChild(b);
+text1=(Object.keys(document).sort());
+var t1=document.createTextNode(text1);
+P.appendChild(t1);
+P.appendChild(document.createElement("br"));
+//自有属性和继承属性
+var c=document.createTextNode("document自有属性与继承属性： ");
+P.appendChild(c);
+var inheritAndSelfProperty=[];
+for(var x in document){
+  inheritAndSelfProperty.push(x).sort;
+}
+inheritAndSelfProperty.sort();
+for(var i=0;i<inheritAndSelfProperty.length;i++){
+  var d=document.createTextNode(inheritAndSelfProperty[i]+" | ");
+  P.appendChild(d);
+}
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createElement("hr"));
+//继承属性
+var e=document.createTextNode("document继承属性： ");
+P.appendChild(e);
+var onlyInherit=[];
+for(var x in document){
+if(!document.hasOwnProperty(x)){
+ onlyInherit.push(x);
+}
+}
+onlyInherit.sort();
+for(var i=0;i<onlyInherit.length;i++){
+var f=document.createTextNode(onlyInherit[i]+" | ");
+P.appendChild(f);	
+}
+
+</script>
+
+
+</body>
+</html>
