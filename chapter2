@@ -6,6 +6,7 @@
 </head>
 <body>
 <p id='p'></p>
+<iframe src="http://www.baidu.com" frameborder="0"></iframe>
 <script>
 //2.1
 var P=document.getElementById("p");
@@ -51,7 +52,69 @@ for(var i=0;i<onlyInherit.length;i++){
 var f=document.createTextNode(onlyInherit[i]+" | ");
 P.appendChild(f);	
 }
+P.appendChild(document.createElement("hr"));
 
+//2.3
+var d=document;
+P.appendChild(document.createTextNode("document.title: "+d.title));//DOM
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.URL: "+d.URL));//file:///E:/Demos/Resume/chapter2.html
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.referrer: "+d.referrer));//""
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.lastModified: "+d.lastModified));//最后修改时间
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.compatMode: "+d.compatMode));//CSS1Compat
+P.appendChild(document.createElement("br"));
+//2.4
+P.appendChild(document.createTextNode(document.childNodes[1].nodeName));
+P.appendChild(document.createElement("br"));
+
+//2.5
+var doct=document.createTextNode("document.doctype输出: ");
+P.appendChild(doct);
+P.appendChild(document.createTextNode(document.doctype));
+P.appendChild(document.createElement("br"));
+var docel=document.createTextNode("document.documentElement输出： ");
+P.appendChild(docel);
+P.appendChild(document.createTextNode(document.documentElement));
+P.appendChild(document.createElement("br"));
+var dochead=document.createTextNode("document.head输出： ");
+P.appendChild(dochead);
+P.appendChild(document.createTextNode(document.head));
+P.appendChild(document.createElement("br"));
+var docbody=document.createTextNode("document.body输出: ");
+P.appendChild(docbody);
+P.appendChild(document.createTextNode(document.body));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createElement("hr"));
+
+
+//2.6
+var fea=document.createTextNode("支持DOM核心2.0吗？: "+document.implementation.hasFeature('core','2.0'));
+P.appendChild(fea);
+P.appendChild(document.createElement("br"));
+//2.7
+var focu=document.createTextNode("document.activeElement获取聚焦节点的引用: ");
+P.appendChild(focu);
+document.querySelector("p").focus();
+P.appendChild(document.createTextNode(document.activeElement));
+P.appendChild(document.createElement("br"));
+//2.8
+var hasFocus=document.createTextNode("hasFocus()方法判断节点是否获取焦点: ");
+P.appendChild(hasFocus);
+P.appendChild(document.createTextNode(document.hasFocus()));
+P.appendChild(document.createElement("br"));
+//2.9
+var defaultView=document.createTextNode("document.defaultView指向顶部对象: ");
+P.appendChild(defaultView);
+P.appendChild(document.createTextNode(document.defaultView));//浏览器环境中顶部对象为window
+P.appendChild(document.createElement("br"));
+
+//2.10
+var ownDoc=document.createTextNode("ownDocument获取节点所在文档: ");
+P.appendChild(ownDoc);
+P.appendChild(document.createTextNode(window.frames[0].document.body.ownerDocument))
 </script>
 
 
