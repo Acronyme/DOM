@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter3</title>
+</head>
+<body>
+<div id="test">
+<p>
+</p>
+<a href="#"></a>
+</div>
+
+<script>
+//3.1
+var a=document.createTextNode("<a>的构造函数是: ");
+var P=document.querySelector("p");
+P.appendChild(a);
+P.appendChild(document.createTextNode(document.querySelector("a").constructor));
+P.appendChild(document.createElement("br"));
+//3.2
+var b=document.createTextNode("HTML Element对象属性与方法: ");
+P.appendChild(b);
+P.appendChild(document.createElement("br"));
+var c=document.createTextNode("①元素自有属性: ");
+P.appendChild(c);
+var anchor=document.querySelector("a");
+var self=document.createTextNode(Object.keys(anchor).sort());
+P.appendChild(document.createElement("br"));
+var inherit=document.createTextNode("②元素继承属性: ");
+P.appendChild(inherit);
+var inhePro=[];
+for(var p in anchor){
+   inhePro.push("  "+p+"  ");
+}
+var inheProText=document.createTextNode(inhePro.sort());
+P.appendChild(inheProText);
+P.appendChild(document.createElement("br"));
+//3.3
+var elementNode=document.createElement("textarea");
+document.body.appendChild(elementNode);
+console.log(document.querySelector("textarea")); //<textarea></textarea>
+P.appendChild(document.createElement("br"));
+//3.4
+var d=document.createTextNode("使用tagName属性获取a元素的标签名: ");
+P.appendChild(d);
+P.appendChild(document.createTextNode(document.querySelector("a").tagName));
+P.appendChild(document.createElement("br"));
+//3.5
+
+</script>
+</body>
+</html>	
