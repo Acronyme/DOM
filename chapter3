@@ -8,7 +8,8 @@
 <div id="test">
 <p>
 </p>
-<a href="#"></a>
+<a href="#" title="abc" data-foo="datafoo" class="ab" style="margin:0"></a>
+
 </div>
 
 <script>
@@ -47,7 +48,14 @@ P.appendChild(d);
 P.appendChild(document.createTextNode(document.querySelector("a").tagName));
 P.appendChild(document.createElement("br"));
 //3.5
-
+var e=document.createTextNode("使用attributes属性取得attr节点集合: ");
+P.appendChild(e);
+var attrs=document.querySelector("a").attributes;
+var list=[];
+for(var i=0;i<attrs.length;i++){
+   list.push(attrs[i].nodeName+'='+attrs[i].nodeValue);
+}
+P.appendChild(document.createTextNode(list));
 </script>
 </body>
 </html>	
