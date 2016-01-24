@@ -5,10 +5,10 @@
 	<title>chapter3</title>
 </head>
 <body>
-<div id="test">
+<div id="test" class="a b c d e">
 <p>
 </p>
-<a href="#" title="abc" data-foo="datafoo" class="ab" style="margin:0"></a>
+<a href="#" title="abc" data-foo="datafoo" class="ab" style="margin:0" id=""></a>
 
 </div>
 
@@ -56,6 +56,71 @@ for(var i=0;i<attrs.length;i++){
    list.push(attrs[i].nodeName+'='+attrs[i].nodeValue);
 }
 P.appendChild(document.createTextNode(list));
+P.appendChild(document.createElement("br"));
+//3.6
+var f=document.createTextNode("使用getAttribute()、setAttribute()、removeAttribute()操作属性: ");
+var A=document.querySelector("a");
+P.appendChild(f);
+P.appendChild(document.createElement("br"));
+var f1=document.createTextNode("①getAttribute()获取属性: ");
+P.appendChild(f1);
+P.appendChild(document.createTextNode(A.getAttribute("style")));
+P.appendChild(document.createElement("br"));
+var f2=document.createTextNode("②setAttribute()设置属性: ");
+P.appendChild(f2);
+P.appendChild(document.createTextNode(document.querySelector("textarea").setAttribute("hidden","true")));
+P.appendChild(document.createElement("br"));
+var f3=document.createTextNode("③removeAttribute()移除属性: ");
+P.appendChild(f3);
+P.appendChild(document.createTextNode(A.removeAttribute("title")));
+P.appendChild(document.createElement("br"));
+//3.7
+var g=document.createTextNode("hasAttribute()判断是否含有属性: ");
+P.appendChild(g);
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("a有style属性吗? "))
+P.appendChild(document.createTextNode(A.hasAttribute("style")));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("a有class属性吗? "));
+P.appendChild(document.createTextNode(A.hasAttribute("class")));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("a有id属性吗?(id='') "));
+P.appendChild(document.createTextNode(A.hasAttribute("id")));
+P.appendChild(document.createElement("br"));
+//3.8
+var elm=document.querySelector("div");
+P.appendChild(document.createTextNode("使用classList获取class属性列表: "));
+P.appendChild(document.createTextNode(elm.classList));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用className获取class属性列表: "));
+P.appendChild(document.createTextNode(elm.className));
+console.log(elm.classList);
+console.log(elm.className);
+P.appendChild(document.createElement("br")); 
+
+//3.9
+elm.classList.add("add");
+elm.classList.remove("c");
+P.appendChild(document.createTextNode("使用classList.add()和classList.remove()添加add类移除c类: "));
+P.appendChild(document.createTextNode(elm.classList));
+P.appendChild(document.createElement("br"));
+//3.10
+P.appendChild(document.createTextNode("classList.toggle()方法变换一个class属性: "));
+elm.classList.toggle("visible");
+elm.classList.toggle("ano");
+P.appendChild(document.createTextNode(elm.classList));
+P.appendChild(document.createElement("br")); 
+//3.11
+P.appendChild(document.createTextNode("用classList.contains()判断是否有某一特定class： "));
+P.appendChild(document.createTextNode(elm.classList.contains("e")));
+P.appendChild(document.createElement("br")); 
+//3.12
+P.appendChild(document.createTextNode("使用dataset属性获取data-*属性: "));
+P.appendChild(document.createTextNode(A.dataset.foo));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用dataset属性设置data-*属性: "));
+elm.dataset.goo="newGoo";
+P.appendChild(document.createTextNode(elm.dataset.goo));
 </script>
 </body>
 </html>	
