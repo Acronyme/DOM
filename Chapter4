@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter4</title>
+</head>
+<body>
+<ul>
+		<li class="test">hello</li>
+		<li class="test">mifan</li>
+		<li id="last">3Q</li>
+	</ul>
+	<p id="para"></p>	
+</body>
+<script>
+//4.1
+var P=document.getElementById("para");
+P.appendChild(document.createTextNode("使用querySelector()和getElementById()选取元素节点: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("①querySelector()返回匹配的第一个节点: "));
+P.appendChild(document.createTextNode(document.querySelector("li").textContent));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("②getElementById()返回指定节点: "));
+P.appendChild(document.createTextNode(document.getElementById("last").textContent));
+P.appendChild(document.createElement("br"));
+//4.2
+console.log(document.querySelectorAll("li"));
+console.log(document.getElementsByTagName("li"));
+console.log(document.getElementsByClassName("test"));
+//4.3
+P.appendChild(document.createTextNode("children属性返回直属元素节点: "));
+P.appendChild(document.createTextNode(document.querySelector("ul").children));
+console.log(document.querySelector("ul").children);
+//4.4
+var div=document.querySelector("ul");
+console.log(div.getElementsByClassName("test"));
+console.log(div.getElementsByTagName("ul"));
+console.log(div.querySelector("li"));
+console.log(div.querySelectorAll("li"));
+P.appendChild(document.createElement("br"));
+//4.5
+P.appendChild(document.createTextNode("预定义的元素节点列表: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.all为文档中所有元素。"));
+P.appendChild(document.createTextNode(document.all));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.forms为文档中所有<form>元素:"));
+P.appendChild(document.createTextNode(document.forms));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.images为文档中所有<img>元素: "));
+P.appendChild(document.createTextNode(document.images));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.links为文档中所有<a>元素: "));
+P.appendChild(document.createTextNode(document.links));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.scripts为文档中所有script元素 "));
+P.appendChild(document.createTextNode(document.scripts));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("document.styleSheets为文档中所有<link>或<style>元素: "));
+P.appendChild(document.createTextNode(document.styleSheets));
+P.appendChild(document.createElement("br"));
+//4.6
+P.appendChild(document.createTextNode("matchesSelector()验证是否匹配选择器: "));
+P.appendChild(document.createTextNode(document.querySelector("li").webkitMatchesSelector("li:first-child")))
+</script>
+</html>
