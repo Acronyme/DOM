@@ -6,12 +6,15 @@
 	<style>
 	*{margin: 0;padding: 0}
     #blue{height: 100px;width: 100px;background-color: silver;border: 10px solid pink;padding: 25px;margin: 25px;opacity: 0.3}
-    #red{height: 50px;width: 50px;background-color: red;border: 10px solid orange;}
+    #red{height: 50px;width: 50px;background-color: red;border: 10px solid orange;overflow: auto;}
+    #flow{height: 1000px;width: 1000px}
 	</style>
 </head>
 <body>
 <div id="blue">
-	<div id="red"></div>
+	<div id="red">
+		<p id="flow"></p>
+	</div>
 </div>
 	<p id="para"></p>	
 </body>
@@ -48,4 +51,23 @@ P.appendChild(document.createElement("br"));
 P.appendChild(document.createTextNode("使用clientWidth和clientHeight属性获取元素在视区的尺寸,包括填充与内容，不含边框: "));
 P.appendChild(document.createTextNode("clientHeight:"+div.clientHeight+"  clientWidth:"+div.clientWidth));
 P.appendChild(document.createElement("br"));
-
+//5.6
+P.appendChild(document.createTextNode("使用elementFromPoint()获取特定坐标点上最顶层元素: "));
+P.appendChild(document.createTextNode(document.elementFromPoint(50,50)));
+P.appendChild(document.createElement("br"));
+//5.7
+P.appendChild(document.createTextNode("使用scrollHeight和scrollWidth获取滚动元素的尺寸: "));
+P.appendChild(document.createTextNode("scrollHeight:"+div.scrollHeight+"  scrollWidth:"+div.scrollWidth));
+P.appendChild(document.createElement("br"));
+//5.8
+P.appendChild(document.createTextNode("scrollTop和scrollLeft获取并设置从上、左边滚动的距离: "));
+div.scrollTop=700;
+div.scrollLeft=600;
+P.appendChild(document.createTextNode("scrollTop: "+div.scrollTop+" scrollLeft:"+div.scrollLeft));
+P.appendChild(document.createElement("br"));
+//5.9
+P.appendChild(document.createTextNode("使用scrollIntoView()滚动元素到视区: "));
+document.querySelector("#flow").scrollIntoView(true);
+P.appendChild(document.createTextNode("通过给scrollIntoView()方法传递true为参数，告诉它滚动到被滚动元素的顶部，不传递参数时默认也为true,滚动到底部则应该传入false."))
+</script>
+</html>
