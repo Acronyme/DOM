@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter5</title>
+	<style>
+	*{margin: 0;padding: 0}
+    #blue{height: 100px;width: 100px;background-color: silver;border: 10px solid pink;padding: 25px;margin: 25px;opacity: 0.3}
+    #red{height: 50px;width: 50px;background-color: red;border: 10px solid orange;}
+	</style>
+</head>
+<body>
+<div id="blue">
+	<div id="red"></div>
+</div>
+	<p id="para"></p>	
+</body>
+<script>
+//5.2
+var P=document.getElementById("para");
+var div=document.querySelector("#red");
+P.appendChild(document.createTextNode("使用offsetTop与offsetLeft获取偏移量: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("offsetParent："));
+P.appendChild(document.createTextNode(div.offsetParent));//body
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("offsetLeft: "));
+P.appendChild(document.createTextNode(div.offsetLeft));//最外侧与body距离  60px
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("offsetTop: "));
+P.appendChild(document.createTextNode(div.offsetTop));//最上边与body距离  60px
+//若将容器div的定位改为非static,则偏移量会发生改变。因为offsetParent改变。
+P.appendChild(document.createElement("br"));
+//5.3
+P.appendChild(document.createTextNode("使用getBoundingClientRect()获取元素相对于视区的边沿偏移量(上右下左): "));
+var divEdges=div.getBoundingClientRect()
+P.appendChild(document.createTextNode(divEdges.top+" ,"+divEdges.right+" ,"+divEdges.bottom+" ,"+divEdges.left))
+P.appendChild(document.createElement("br"));
+//5.4
+P.appendChild(document.createTextNode("getBoundingClientRect()的height和width属性表示元素尺寸: "));
+P.appendChild(document.createTextNode("height:"+divEdges.height+"  width:"+divEdges.width))
+//元素尺寸为border+padding+content
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用offsetWidth和offsetHeight获取元素尺寸: "));
+P.appendChild(document.createTextNode("height:"+div.offsetHeight+" Width:"+div.offsetWidth));
+P.appendChild(document.createElement("br"));
+//5.5
+P.appendChild(document.createTextNode("使用clientWidth和clientHeight属性获取元素在视区的尺寸,包括填充与内容，不含边框: "));
+P.appendChild(document.createTextNode("clientHeight:"+div.clientHeight+"  clientWidth:"+div.clientWidth));
+P.appendChild(document.createElement("br"));
+
