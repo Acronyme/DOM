@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter5</title>
+	<style>
+	#css{color:silver;font-family: 微软雅黑;}
+	.class{font-size: 50px;}
+	#bar{width:300px;}
+	</style>
+</head>
+<body>
+<div id="css" style="background-color:red;border:2px solid yellow;height:100px;width:100px;">test</div>
+<p id="para"></p>
+</body>
+<script>
+var P=document.getElementById("para");
+var div=document.getElementById("css");
+//6.1
+P.appendChild(document.createTextNode("使用style属性获取CSSStyleDeclaration(含内联样式): "));
+P.appendChild(document.createTextNode(div.style));
+P.appendChild(document.createElement("br"));
+//6.2
+P.appendChild(document.createTextNode("使用style对象设置、获取或删除CSS属性: "));
+P.appendChild(document.createElement("br"));
+
+//set
+div.style.backgroundColor="blue";
+div.style.border="3px solid red";
+div.style.width="100px";
+div.style.height="100px";
+//get
+P.appendChild(document.createTextNode("BGColor: "+div.style.backgroundColor));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("border: "+div.style.border));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("width: "+div.style.width));
+P.appendChild(document.createElement("br"));
+//remove
+div.style.backgroundColor="";
+div.style.border="";
+div.style.width="";
+div.style.height="";
+
+P.appendChild(document.createTextNode("style对象是个CSSStyleDeclaration对象，它不仅提供了单个CSS属性的访问方式"));
+P.appendChild(document.createTextNode("也提供setPropertyValue(propertyName)、"));
+P.appendChild(document.createTextNode("getPropertyValue(propertyName)以及removeProperty()方法操作单个css属性"));
+P.appendChild(document.createElement("br"));
+//set
+div.style.setProperty("background-color","pink");
+div.style.setProperty("border","2px dashed green");
+div.style.setProperty("width","200px");
+div.style.setProperty("height","200px");
+//get
+P.appendChild(document.createTextNode("BGColor:"+div.style.getPropertyValue("background-color")));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("border:"+div.style.getPropertyValue("border")));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("width:"+div.style.getPropertyValue("width")));
+P.appendChild(document.createElement("br"));
+//remove
+div.style.removeProperty("background-color");
+div.style.removeProperty("border");
+div.style.removeProperty("width");
+
+//6.3
+P.appendChild(document.createTextNode("使用CSSStyleDeclaration对象的cssText属性和getAttribute()、setAttribute()"));
+P.appendChild(document.createTextNode("可以使用JavaScript字符串获取、设置及移除style属性的整个值: "));
+P.appendChild(document.createElement("br"));
+//使用cssText设置
+div.style.cssText="background-color:gray;border:1px groove purple;height:100px;width:100px;";
+P.appendChild(document.createTextNode("●使用cssText获取: "));
+P.appendChild(document.createTextNode(div.style.cssText));
+//使用cssText移除
+//div.style.cssText="";
+P.appendChild(document.createElement("br"));
+//使用setAttribute设置
+div.setAttribute("style","background-color:orange;border:2px dashed blue;height:100px;width:100px;");
+P.appendChild(document.createTextNode("●使用getAttribute()获取style属性值: "));
+P.appendChild(document.createTextNode(div.getAttribute("style")));
+P.appendChild(document.createElement("br"));
+
+//移除
+div.removeAttribute("style");
+//6.4
+P.appendChild(document.createTextNode("使用getComputedStyle()获取元素的已计算样式(包含任何级联样式的实际样式)"));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("获取背景: "));
+P.appendChild(document.createTextNode(window.getComputedStyle(div).backgroundColor));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("获取边框: "));
+P.appendChild(document.createTextNode(window.getComputedStyle(div).border));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("获取color: "));
+P.appendChild(document.createTextNode(window.getComputedStyle(div).color));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("样式规则可以通过操作元素上的class和id属性添加或移除： "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●使用setAttribute()和classList.add()通过设置class与id值应用样式到元素"));
+div.setAttribute("id","bar");
+div.classList.add("class");
+P.appendChild(document.createTextNode("●使用removeAttribute()与classList.remove()移除规则"));
+div.removeAttribute("id");
+div.classList.remove("class")
+</script>
+</html>
