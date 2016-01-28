@@ -122,5 +122,15 @@ P.appendChild(document.createTextNode("innerText是非标准的,而textContent�
 P.appendChild(document.createElement("br"));
 P.appendChild(document.createTextNode("innerText在FireFox无法使用"))
 P.appendChild(document.createElement("br"));
+//7.10
+P.appendChild(document.createTextNode("normalize()可以将1兄弟文本节点合并为单个: "));
+document.querySelector("div").normalize();//合并兄弟文本节点
+P.appendChild(document.createElement("br"));
+//7.11
+P.appendChild(document.createTextNode("使用splitText()可以分割文本节点: "));
+P.appendChild(document.createElement("br"));
+document.querySelector("p").firstChild.splitText(4).data;//提取DOM中的文本
+P.appendChild(document.querySelector("p").firstChild.textContent;)//仍在DOM中的
+P.appendChild(document.createTextNode())
 </script>
 </html>
