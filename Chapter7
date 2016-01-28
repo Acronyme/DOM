@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter7</title>
+</head>
+<body>
+<p id="txt">Hi</p>
+<p id="blank"> </p>
+<p id="lorem">hello</p>
+</body>
+<script>
+var P=document.getElementById("txt");
+var text=document.querySelector("#txt").firstChild;
+//7.1
+P.appendChild(document.createTextNode("p的文本节点: "));
+P.appendChild(document.createTextNode(text));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("文本节点的构造函数: "));
+P.appendChild(document.createTextNode(text.constructor));
+P.appendChild(document.createElement("br"));
+//7.2
+P.appendChild(document.createTextNode("文本对象的属性: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●text自有属性: "));
+P.appendChild(document.createTextNode(Object.keys(text).sort()));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●text继承属性: "));
+var inheritPropert=[];
+for(var x in text){
+	if(!text.hasOwnProperty(x)){
+		inheritPropert.push(x+" | ");
+	}
+}
+P.appendChild(document.createTextNode(inheritPropert.sort()));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("DOM中空白符和文本字符都表现为文本节点: "));
+var blank=document.getElementById("blank");
+P.appendChild(document.createTextNode(blank.firstChild.nodeName));
+P.appendChild(document.createElement("br"));
+//7.4
+var textNode=document.createTextNode("Mi Fan");
+P.appendChild(textNode);
+P.appendChild(document.createTextNode("创建的文本节点: "));
+P.appendChild(document.createTextNode(P.lastChild));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("也可以将文本节点注入动态创建的DOM结构: "));
+var elementNode=document.createElement("span");
+var txtNode=document.createTextNode("active");
+elementNode.appendChild(txtNode);
+document.querySelector("body").appendChild(elementNode);
+P.appendChild(document.createTextNode(document.querySelector("span").innerHTML));
+P.appendChild(document.createElement("br"));
+//7.5
+P.appendChild(document.createTextNode("使用.data或者nodeValue获取文本节点值: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用.data获取文本值: "))
+P.appendChild(document.createTextNode(document.querySelector("#lorem").firstChild.data));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用nodeValue获取文本值: "));
+P.appendChild(document.createTextNode(document.querySelector("#lorem").firstChild.nodeValue));
+P.appendChild(document.createElement("br"));
+//7.6
+P.appendChild(document.createTextNode("使用appendData()、deleteData()、insertData()、replaceData()和subStringData()操作文本节点"));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("appendData(): "));
+blank.firstChild.appendData("!");
+P.appendChild(document.createTextNode(blank.data));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("deleteData(): "));
+blank.firstChild.deleteData(0,2);
+P.appendChild(document.createTextNode(blank.data));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("insertData(): "));
+blank.firstChild.insertData(0,'HI');
+P.appendChild(document.createTextNode(blank.data));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("replaceData(): "));
+blank.firstChild.replaceData(0,2,"ME");
+P.appendChild(document.createTextNode(blank.data));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("subStringData(): "));
+blank.firstChild.substringData(0,2);
+P.appendChild(document.createTextNode(blank.data));
+P.appendChild(document.createElement("br"));
+
+</script>
+</html>
