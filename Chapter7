@@ -5,9 +5,12 @@
 	<title>chapter7</title>
 </head>
 <body>
+<div>
 <p id="txt">Hi</p>
 <p id="blank"> </p>
 <p id="lorem">hello</p>
+<p id="bra">Hello <strong>Mi</strong>Fan</p>
+</div>	
 </body>
 <script>
 var P=document.getElementById("txt");
@@ -83,6 +86,41 @@ P.appendChild(document.createTextNode("subStringData(): "));
 blank.firstChild.substringData(0,2);
 P.appendChild(document.createTextNode(blank.data));
 P.appendChild(document.createElement("br"));
-
+//7.7
+P.appendChild(document.createTextNode("当有多个兄弟文本节点时: "));
+var bra=document.querySelector("#bra");
+var textHi=document.createTextNode("hi");
+var texthello=document.createTextNode("hello");
+var pro=document.createElement("p");
+pro.appendChild(texthello);
+pro.appendChild(textHi);
+document.querySelector("body").appendChild(pro);
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("当动态添加Text节点到某个动态创建的元素时:"));
+P.appendChild(document.createTextNode(document.querySelector("body").childNodes.length));
+P.appendChild(document.createElement("br"));
+//7.8
+P.appendChild(document.createTextNode("使用textContent获取所有文本节点: "));
+P.appendChild(document.createTextNode(document.body.textContent));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●当用textContent设置某个节点所含文本时,它将先移除所有子节点，将它们替换为单个Text节点："));
+document.querySelector("div").textContent="I AM  NKFAN";
+P.appendChild(document.createTextNode(document.querySelector("div").textContent)); 
+P.appendChild(document.createElement("br"));
+//7.9
+P.appendChild(document.createTextNode("textContent与innerText的区别(): "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("innerText知道CSS,若有隐藏文本innerText会忽略，而textContent不会"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("innerText关心CSS,会出发一次重排，而textContent不会"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("innerText无视script和style元素的Text节点"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("innerText会使返回的文本规范化,而textContent仅移除标记,会包含空白换行回车"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("innerText是非标准的,而textContent是依据DOM规范实现的"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("innerText在FireFox无法使用"))
+P.appendChild(document.createElement("br"));
 </script>
 </html>
