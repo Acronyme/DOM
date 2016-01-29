@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter8</title>
+</head>
+<body>
+<div id="warp">
+	<p id="para"></p>
+	 <ul></ul>
+	 <ul id="c"></ul>
+</div>
+</body>
+<script>
+var P=document.getElementById("para");
+//8.2
+var docFrag=document.createDocumentFragment();
+['blue','orange','purple','pink'].forEach(function(e){
+	var li=document.createElement("li");
+	li.textContent=e;
+	docFrag.appendChild(li);
+});
+P.appendChild(document.createTextNode("createDocumentFragment()创建documentFragment: "));
+P.appendChild(document.createTextNode(docFrag.textContent));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用文档片段与内存中createElement()创建div并在div中加入DOM的区别: "))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●文档片段可以包含任何类型的节点,除body与html,而元素不可以"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●当附加文档片段到DOM,它自身并不会被添加,而元素节点会一并添加到DOM"))
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●当文档片段被附加到DOM,它从文档片段传输内容到DOM,自身不再存在于创建时的位置;与用来包含临时节点，而后移动到实时DOM中的元素节点来说不同。"))
+P.appendChild(document.createElement("br"));
+//8.3
+var ul=document.querySelector("ul");
+ul.appendChild(docFrag);
+P.appendChild(document.createTextNode("添加DocumentFragement给实时DOM: "));
+P.appendChild(document.createTextNode(document.querySelector("ul").innerHTML));
+P.appendChild(document.createElement("br"));
+//8.4
+P.appendChild(document.createTextNode("使用文档片段上的innerHTML: "));
+var divEl=document.createElement("div");
+var docFrag1=document.createDocumentFragment();
+docFrag1.appendChild(divEl);
+docFrag1.querySelector("div").innerHTML='<ul><li>foo</li><li>bar</li></ul>';
+P.appendChild(document.createTextNode(docFrag1.querySelectorAll("li").length));
+document.querySelector("div").appendChild(docFrag1.querySelector("div").firstChild);
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode(document.querySelector("#warp").innerHTML));
+//8.5
+P.appendChild(document.createTextNode("通过复制cloneNode()将片段所含节点保留在内存中: "));
+var ul=document.querySelector("#c");
+ul.appendChild(docFrag1.cloneNode(true));
+P.appendChild(document.createTextNode(ul.innerHTML));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode(docFrag1.childNodes));
+</script>
+</html>
