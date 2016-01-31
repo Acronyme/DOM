@@ -52,3 +52,50 @@ for(var x in stylesheet){
 P.appendChild(document.createTextNode(inheritPro));
 P.appendChild(document.createElement("br"));
 //9.4
+P.appendChild(document.createTextNode("CSSStyleRules对象代表了样式表中所含的每条CSS规则: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode(stylesheet.cssRules[0].CSSText));
+P.appendChild(document.createElement("br"));
+//9.5
+P.appendChild(document.createTextNode("CSSStyleRule属性与方法: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("自有属性: "));
+var a=stylesheet.cssRule;
+//P.appendChild(document.createTextNode(Object.keys(a).sort()));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("继承属性: "));
+P.appendChild(document.createElement("br"));
+var inheritProper=[];
+for(var p in a){
+	if(!a.hasOwnProperty(p))
+		inheritProper.push(p);
+	}
+P.appendChild(document.createTextNode(inheritProper));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用cssRules获取css规则列表: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode(stylesheet.cssRules));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用insertRule()和deleteRule()插入与删除样式表的CSS规则: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("insertRule(): font-size: "))
+stylesheet.insertRule("body{font-size:20px;}",1);
+P.appendChild(document.createTextNode("deleteRule() 背景: "));
+stylesheet.deleteRule(0);
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用.style属性修改CSS规则: "));
+stylesheet.cssRules[0].style.color="red";
+stylesheet.cssRules[1].style.color="blue";
+P.appendChild(document.createTextNode(stylesheet.cssRules[0].style.color));
+P.appendChild(document.createElement("br"));
+//9.9
+var styleEle=document.createElement("style");
+styleEle.innerHTML="body{color:orange;}";
+document.querySelector("head").appendChild(styleEle);
+//9.10
+P.appendChild(document.createTextNode("动态添加CSS文件到HTML文档需要创建link节点附加到DOM"));
+var linkEle=document.createElement("link");
+linkEle.setAttribute("rel","stylesheet");
+linkEle.setAttribute("type","text/css");
+linkEle.setAttribute("id","linkEle");
+document.head.appendChild(linkEle);
