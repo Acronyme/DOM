@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter9</title>
+	<style>
+    body{background-color:silver}
+    p{color:blue;}
+	</style>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<div id="warp">
+	<p></p>
+</div>
+</body>
+<script>
+var P=document.querySelector("#warp p");
+//9.1
+P.appendChild(document.createTextNode("<link>与<style>的构造函数: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("<style>: "+document.querySelector("style").constructor));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("<link>: "+document.querySelector("link").constructor));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●一有样式表添加到HTML文档，它即表示为CSSStyleSheet对象，样式表里每条CSS规则都表示为一个CSSStyleRule对象: "));
+P.appendChild(document.createTextNode(document.querySelector("style").sheet.constructor));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("cssRules构造函数: "));
+P.appendChild(document.createTextNode(document.querySelector("style").sheet.cssRules[0].constructor));
+P.appendChild(document.createElement("br"));
+//9.2
+P.appendChild(document.createTextNode("CSSStyleSheet对象: "));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●styleSheets.length: "))
+P.appendChild(document.createTextNode(document.styleSheets.length));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("●styleSheetS[0]: "));
+P.appendChild(document.createTextNode(document.styleSheets[0]));
+P.appendChild(document.createElement("br"));
+//9.3
+var stylesheet=document.querySelector("style").sheet;
+P.appendChild(document.createTextNode("style自有属性: "));
+P.appendChild(document.createTextNode(Object.keys(stylesheet).sort()));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("style继承属性: "));
+ var inheritPro=[];
+for(var x in stylesheet){
+ if(!stylesheet.hasOwnProperty(x))
+ 	inheritPro.push(x);
+}
+P.appendChild(document.createTextNode(inheritPro));
+P.appendChild(document.createElement("br"));
+//9.4
