@@ -99,3 +99,9 @@ linkEle.setAttribute("rel","stylesheet");
 linkEle.setAttribute("type","text/css");
 linkEle.setAttribute("id","linkEle");
 document.head.appendChild(linkEle);
+//9.11
+P.appendChild(document.createTextNode("使用disabled属性使样式表失效或者生效: "));
+P.appendChild(document.createTextNode(linkEle.disabled));
+document.querySelector("#linkEle").disabled=true;
+</script>
+</html>
