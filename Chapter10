@@ -14,6 +14,17 @@
 ●应该避免使用自关闭脚本标签<script src=""  />
 ●script标签没有任何必须的属性，可选属性有async、charset、defer、src和type
 ●如果JavaScript代码包含字符串</script>，那么需要将之转义为<\/script>
+//10.3
+●默认情况下，当DOM在解析且遇到一个script元素时候，它将停止解析文档，阻止下一步的渲染与下载并执行该JavaScript. 
+●此行为时阻塞的，不允许并行解析DOM或者执行JavaScript，因此它被认为是同步的。当执行完毕JavaScript后将会继续文档解析。
+●若在HTML页头有一些脚本，则会在它们一次下载执行完毕后才会解析DOM。
+//10.4
+○使用async异步下载执行外部JavaScript：
+●通过此属性可以让浏览器放弃顺序加载,不会阻塞html页面构建。
+●使用此属性的一个前提是document.write()不会再被推迟的JavaScript中使用。
+●async缺点是JS文件可能完全不按照顺序解析
+●如果在一个script元素上使用async和defer，async会覆盖defer
+
 		</pre>	
 		</p>
 	</div>	
@@ -21,7 +32,14 @@
 <script>
 var div=document.querySelector("warp");
 var P=document.getElementById("para");
-//10.1
+//10.3
+P.appendChild(document.createTextNode("script的defer属性可以延迟加载外部JS： "));
+p.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("<script defer src="..."></script>将会延迟执行此JavaScript,在html元素节点解析完成之前忽略此JS"));
+P.appendChild(document.createElement("br"));
+P.appendChild(document.createTextNode("使用defer的一个前提是document.write()不会再被推迟的JavaScript中使用。"));
+P.appendChild(document.createElement("br"));
+//10.5
 
 </script>
 </html>
