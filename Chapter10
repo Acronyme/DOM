@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter10</title>
+</head>
+<body>
+<div id="warp">
+		<p id="para">
+		<pre>
+●通过引入外部JavaScript文件或者编写内联JavaScript来添加JavaScript到HTML文档。
+●两种添加JavaScript到HTML文档的方式都需要使用script元素节点，script元素可以包含JavaScript代码或者使用src属性引入外部JavaScript文件链接。
+●在同一个script标签里引入外部JavaScript并且在内部编写内联JavaScript会导致内联JavaScript被忽略
+●应该避免使用自关闭脚本标签<script src=""  />
+●script标签没有任何必须的属性，可选属性有async、charset、defer、src和type
+●如果JavaScript代码包含字符串</script>，那么需要将之转义为<\/script>
+		</pre>	
+		</p>
+	</div>	
+</body>
+<script>
+var div=document.querySelector("warp");
+var P=document.getElementById("para");
+//10.1
+
+</script>
+</html>
