@@ -24,7 +24,15 @@
 ●使用此属性的一个前提是document.write()不会再被推迟的JavaScript中使用。
 ●async缺点是JS文件可能完全不按照顺序解析
 ●如果在一个script元素上使用async和defer，async会覆盖defer
-
+//10.5
+●动态创建script元素并且引入外部JS并且添加它们到DOM可以强制浏览器以异步方式处理此JavaScript.
+●缺点是JS文件可能完全不按照顺序解析
+//10.6
+通过给异步script添加onload回调从而知道它们何时加载完毕。
+//10.7
+●由于script的同步天性，如果JS执行依赖任何在某个script元素之后的DOM结构，将会遇到错误。
+//10.8
+文档对象上可用document.scripts属性获取当前DOM中所有脚本元素的列表HTMLCollection
 		</pre>	
 		</p>
 	</div>	
@@ -40,6 +48,14 @@ P.appendChild(document.createElement("br"));
 P.appendChild(document.createTextNode("使用defer的一个前提是document.write()不会再被推迟的JavaScript中使用。"));
 P.appendChild(document.createElement("br"));
 //10.5
-
+var underScript=document.createElement("script");
+underScript.src="jQuery.js";
+document.body.appendChild(underScript);
+//10.6
+underScript.onload=function(){alert("underScript加载执行完毕")}
+//10.8
+Array.prototype.slice.call(document.scripts).forEach(function(elm){
+	console.log(elm,elm.src)
+})
 </script>
 </html>
