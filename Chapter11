@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM事件</title>
+</head>
+<body onclick="alert('触发内联事件处理程序')">
+<div id="warp">
+	<p id="para">
+	<pre>
+1.DOM事件概览
+●DOM事件是指发生某种与DOM中元素、document对象或window对象有关的时刻或者契机。
+●可以通过HTML内联属性事件处理程序，属性事件处理程序，或者addEventListener()方法布置事件回调。
+●使用属性事件处理程序的坏处是每次只能给事件属性赋一个值。当多次赋值，后边的会覆盖之前的。
+●Element节点三者都支持，Document节点支持属性事件处理程序和addEventListener()方法，window对象通过body
+或者frameset元素支持内联事件处理程序，也支持属性事件处理程序和addEventListener()方法。
+●属性事件处理程序也称为DOM0级事件;addEventListener称为DOM2级事件。
+	</pre>
+	</p>
+</div>
+</body>
+<script>
+var div=document.querySelector("#warp");
+//属性事件处理程序
+div.onclick=function(){alert("触发属性事件处理程序")};
+//addEventListener方法
+div.addEventListener('click',function(){ alert("触发addEventListener") },false);
+</script>
+</html>
