@@ -15,6 +15,9 @@
 ●Element节点三者都支持，Document节点支持属性事件处理程序和addEventListener()方法，window对象通过body
 或者frameset元素支持内联事件处理程序，也支持属性事件处理程序和addEventListener()方法。
 ●属性事件处理程序也称为DOM0级事件;addEventListener称为DOM2级事件。
+3.事件流程
+事件发生时在DOM中传播时，当div被点击，捕捉阶段从window对象开始，然后通过在每个对象上触发click事件向DOM树下方传播，直到它抵达事件目标。当捕捉阶段结束，冒泡阶段就开始，先在目标元素自身上触发click事件，然后传播阶段开始从事件目标上传播，触发click事件，直到它抵达window对象。
+
 	</pre>
 	</p>
 </div>
@@ -25,5 +28,18 @@ var div=document.querySelector("#warp");
 div.onclick=function(){alert("触发属性事件处理程序")};
 //addEventListener方法
 div.addEventListener('click',function(){ alert("触发addEventListener") },false);
+//11.3
+//捕获
+window.addEventListener('click',function(){ console.log(1); },true);
+document.addEventListener('click',function(){ console.log(2); },true);
+document.documentElement.addEventListener('click',function(){ console.log(3); },true);
+document.body.addEventListener('click',function(){ console.log(4); },true);
+document.querySelector('div').addEventListener('click',function(){ console.log(5); },true);
+//冒泡
+document.querySelector('div').addEventListener('click',function(){console.log(6)},false);
+document.body.addEventListener('click',function(){console.log(7)});
+document.documentElement.addEventListener('click',function(){console.log(8)},false);
+document.addEventListener('click',function(){console.log(9)},false);
+window.addEventListener('click',function(){console.log(10)},false);
 </script>
 </html>
