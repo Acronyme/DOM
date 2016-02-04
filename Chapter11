@@ -17,7 +17,13 @@
 ●属性事件处理程序也称为DOM0级事件;addEventListener称为DOM2级事件。
 3.事件流程
 事件发生时在DOM中传播时，当div被点击，捕捉阶段从window对象开始，然后通过在每个对象上触发click事件向DOM树下方传播，直到它抵达事件目标。当捕捉阶段结束，冒泡阶段就开始，先在目标元素自身上触发click事件，然后传播阶段开始从事件目标上传播，触发click事件，直到它抵达window对象。
-
+4.addEventListener()在所有Element节点、window对象及document对象都可用
+●addEventListener()接受三个参数，一个是要监听的事件类型，此字符串不含有on前缀，第二个是事件发生时调用的函数，第三个是布尔值，表示事件监听在捕获阶段还是冒泡阶段，捕获阶段为true.
+●若没指定第三个参数值，默认为false，addEventListenter()方法还可以用在XMLHttpRequest对象上.
+5移除事件监听函数
+●若原始的监听函数不是以匿名函数形式添加，那么可以用removeEventListener()方法移除。匿名则不能。
+6.从事件对象获取事件属性
+默认情况下调用事件处理程序或者回调函数时会传一个参数，内含所有有关事件自身的信息。
 	</pre>
 	</p>
 </div>
@@ -41,5 +47,18 @@ document.body.addEventListener('click',function(){console.log(7)});
 document.documentElement.addEventListener('click',function(){console.log(8)},false);
 document.addEventListener('click',function(){console.log(9)},false);
 window.addEventListener('click',function(){console.log(10)},false);
+//11.4
+window.addEventListener('mousemove',function(){console.log('window')},false);
+document.addEventListener('mousemove',function(){console.log('document')},false);
+document.querySelector("div").addEventListener('mousemove',function sayHi(){console.log('element')},false);
+//11.5
+document.querySelector("div").removeEventListener('click',sayHi,false);
+//11.6
+document.querySelector("div").addEventListener('click',function (event){
+	Object.keys(event).sort().forEach(function(item){
+		console.log(item+ ' = '+event[item]);
+	})
+},false);
+
 </script>
 </html>
