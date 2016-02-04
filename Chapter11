@@ -24,6 +24,10 @@
 ●若原始的监听函数不是以匿名函数形式添加，那么可以用removeEventListener()方法移除。匿名则不能。
 6.从事件对象获取事件属性
 默认情况下调用事件处理程序或者回调函数时会传一个参数，内含所有有关事件自身的信息。
+事件对象还提供stopPropagation()、stopImmediatePropagation()、和preventDefault(）方法
+7.
+●传给addEventListener()方法的事件监听函数中this的值会指向事件绑定的节点或对象
+●还可以使用event.currentTarget属性在节点或对象的事件监听函数中获取等同this所供值的引用。
 	</pre>
 	</p>
 </div>
@@ -59,6 +63,11 @@ document.querySelector("div").addEventListener('click',function (event){
 		console.log(item+ ' = '+event[item]);
 	})
 },false);
+//11.7
+document.querySelector("div").addEventListener('click',function(){
+	console.log(this);
+},false);
+//11.8
 
 </script>
 </html>
