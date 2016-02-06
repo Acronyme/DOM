@@ -28,6 +28,11 @@
 7.
 ●传给addEventListener()方法的事件监听函数中this的值会指向事件绑定的节点或对象
 ●还可以使用event.currentTarget属性在节点或对象的事件监听函数中获取等同this所供值的引用。
+8.
+event.target可以获得事件的源点。如body元素有click事件，而在body元素中点击div会触发body的click事件，使用event.target指向触发click事件的div
+9.
+浏览器的默认事件可以通过为调用默认事件的节点或对象绑定事件处理函数，并在事件发生时调用preventDefault()方法阻止掉。
+●传给事件监听函数的事件对象有一个布尔值calcelable属性，表示此事件是否会响应preventDefault()方法
 	</pre>
 	</p>
 </div>
@@ -68,6 +73,12 @@ document.querySelector("div").addEventListener('click',function(){
 	console.log(this);
 },false);
 //11.8
-
+document.body.addEventListener('click',function(event){
+	console.log(event.target);
+},false);
+//11.9
+document.querySelector('a').addEventListener('click',function(event){
+	event.preventDefault();//阻止a的默认事件，即跳转至URL
+})
 </script>
 </html>
