@@ -33,6 +33,10 @@ event.target可以获得事件的源点。如body元素有click事件，而在bo
 9.
 浏览器的默认事件可以通过为调用默认事件的节点或对象绑定事件处理函数，并在事件发生时调用preventDefault()方法阻止掉。
 ●传给事件监听函数的事件对象有一个布尔值calcelable属性，表示此事件是否会响应preventDefault()方法
+10.使用stopPropagation()终止事件流程
+在事件处理程序、监听函数内调用stopPropagation()将终止捕捉和冒泡事件流程，但直接绑定到该节点或者对象的监听函数仍然会被调用。
+11.使用stopImmediatePropagation()终止事件流程与相同目标的其他事件。
+在事件处理程序、监听函数中调用stopImmediatePropagation()将终止事件流程阶段和其他绑定到事件目标上且在调用stopImmediatePropagation()方法的监听函数之后的事件监听。
 	</pre>
 	</p>
 </div>
@@ -80,5 +84,23 @@ document.body.addEventListener('click',function(event){
 document.querySelector('a').addEventListener('click',function(event){
 	event.preventDefault();//阻止a的默认事件，即跳转至URL
 })
+//11.10
+document.querySelector("div").addEventListener('click',function(){
+	console.log('我会被调用');
+},false);
+document.querySelector("div").addEventListener('click',function(event){
+	console.log('调用所绑定的点击事件，但阻止捕捉与冒泡');
+	event.stopPropagation();
+},false);
+//11.11
+document.querySelector('div').addEventListener('click',function(){
+   console.log('最早绑定，可以被调用');
+},false);
+document.querySelector('div').addEventListener('click',function(event){
+	console.log('我被调用了，但组织了其他点击事件监听');
+},false);
+document.querySelector('div').addEventListener('click',function(event){
+	console.log('已经被前一个事件监听阻止');
+},false);
 </script>
 </html>
