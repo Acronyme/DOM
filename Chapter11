@@ -42,7 +42,9 @@ event.target可以获得事件的源点。如body元素有click事件，而在bo
 在事件处理程序、监听函数中调用stopImmediatePropagation()将终止事件流程阶段和其他绑定到事件目标上且在调用stopImmediatePropagation()方法的监听函数之后的事件监听。
 12.自定义事件
 使用addEventListener()方法结合document.createEvent()、initCustomEvent()及dispatchEvent()就可以绑定并触发自定义事件。
-
+13.模拟事件
+14.委托事件
+依赖事件冒泡
 	</pre>
 	</p>
 </div>
