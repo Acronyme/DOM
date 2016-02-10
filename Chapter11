@@ -126,6 +126,11 @@ var simulateClick=document.createEvent('MouseEvent');
 simulateClick.initMouseEvent('click',true,true,document.defaultView,0,0,0,0,0,false,false,false,0,null,null);
 divElement.dispatchEvent(simulateClick);
 //11.13
-
+//将click事件委托给table
+document.querySelector('table').addEventListener('click',function(event){
+	if(event.target.tagName.toLowerCase()==='td'){
+		console.log(event.target.textContent)
+	}
+})
 </script>
 </html>
