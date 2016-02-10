@@ -103,7 +103,7 @@ document.querySelector('div').addEventListener('click',function(){
    console.log('最早绑定，可以被调用');
 },false);
 document.querySelector('div').addEventListener('click',function(event){
-	console.log('我被调用了，但阻止了其他点击事件监听');
+	console.log('我被调用了，但组织了其他点击事件监听');
 },false);
 document.querySelector('div').addEventListener('click',function(event){
 	console.log('已经被前一个事件监听阻止');
@@ -116,5 +116,16 @@ divElement.addEventListener('goBlue',function(event){
 },false);
 cheer.initCustomEvent('goBlue',true,false,{goBlueIs:"it's gone"});
 divElement.dispatchEvent(cheer);
+//11.13
+divElement.addEventListener('click',function(event){
+	console.log(Object.keys(event));
+},false);
+//创建模拟的鼠标事件
+var simulateClick=document.createEvent('MouseEvent');
+/*initMouseEvent(type,bubbles,cancelable,view,detail,screenX,screenY,clientX,clientY,ctrlKey,altKey,shiftKey,metaKey,button,relateTarget)*/
+simulateClick.initMouseEvent('click',true,true,document.defaultView,0,0,0,0,0,false,false,false,0,null,null);
+divElement.dispatchEvent(simulateClick);
+//11.13
+
 </script>
 </html>
