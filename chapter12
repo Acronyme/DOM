@@ -15,15 +15,20 @@
 		return new GetOrMakeDom(params,context);
 	};
 	var GetOrMakeDom=function(params,context){
-
+		var currentContext=doc;
+        if(context){
+        	if(context.nodeType){
+        		currentContext=context;
+        	}else{
+        		currentContext=doc.querySelector(context);
+        	}
+        }
 	};
 	//暴露dom到全局作用域
 	global.dom=dom;
 	//prototype的捷径
 	dom.fn=GetOrMakeDom.prototype;
-})(window);
-//12.3
-				
+})(window);				
 </script>
 </body>
 </html>
