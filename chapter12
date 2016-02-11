@@ -23,6 +23,10 @@
         		currentContext=doc.querySelector(context);
         	}
         }
+        if(!params || params==='' || typeof params==='string'&&params.trim()===''){
+        	this.length=0;
+        	return this;
+        }
 	};
 	//暴露dom到全局作用域
 	global.dom=dom;
