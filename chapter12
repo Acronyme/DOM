@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chapter12</title>
+</head>
+<body>
+<script>	
+//12.2
+(function(win){
+	var global=win;
+	var doc=this.document;
+	//12.3
+	var dom=function(params,context){
+		return new GetOrMakeDom(params,context);
+	};
+	var GetOrMakeDom=function(params,context){
+
+	};
+	//暴露dom到全局作用域
+	global.dom=dom;
+	//prototype的捷径
+	dom.fn=GetOrMakeDom.prototype;
+})(window);
+//12.3
+				
+</script>
+</body>
+</html>
